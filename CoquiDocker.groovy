@@ -13,7 +13,6 @@ import com.squareup.okhttp.Response
 import okio.BufferedSource
 import com.squareup.okhttp.ResponseBody
 
-OkHttpClient client = new OkHttpClient();
 
 String content =URLEncoder.encode(" Spirit World! Answer Me!  ".trim(),StandardCharsets.UTF_8.toString()).replace("+", "%20")
 
@@ -25,7 +24,7 @@ Request request = new Request.Builder()
 		.build();
 
 try {
-	Response response = client.newCall(request).execute()
+	Response response = new OkHttpClient().newCall(request).execute()
 	// Handle the response as needed
 	String responseBody = response.message()
 	InputStream is = response.body().byteStream();	
